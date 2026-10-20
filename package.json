@@ -1,0 +1,45 @@
+{
+  "name": "task-manager-web",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "engines": {
+    "node": "^18.18.0 || ^20.9.0 || >=22"
+  },
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "start": "node build/index.js",
+    "preview": "vite preview",
+    "prepare": "svelte-kit sync || echo ''",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "lint": "prettier --check .",
+    "test": "tsx --test src/lib/server/db/*.test.ts src/lib/server/auth/*.test.ts src/lib/server/tasks/*.test.ts src/lib/server/reports/*.test.ts src/lib/server/security/*.test.ts scripts/bootstrap-admin.test.ts src/routes/api/health/health.test.ts",
+    "db:migrate": "tsx scripts/migrate.ts",
+    "db:health": "tsx scripts/check-database.ts",
+    "db:seed": "tsx scripts/seed-demo.ts",
+    "db:bootstrap-admin": "tsx scripts/bootstrap-admin.ts"
+  },
+  "dependencies": {
+    "argon2": "^0.41.1",
+    "postgres": "^3.4.7"
+  },
+  "overrides": {
+    "cookie": "0.7.2"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.3.7",
+    "prettier": "^3.5.3",
+    "prettier-plugin-svelte": "^3.4.0",
+    "@sveltejs/adapter-node": "^5.2.12",
+    "@sveltejs/kit": "^2.22.0",
+    "@sveltejs/vite-plugin-svelte": "^5.1.1",
+    "@types/node": "^22.15.30",
+    "svelte": "^5.34.0",
+    "svelte-check": "^4.2.2",
+    "tsx": "^4.20.3",
+    "typescript": "~5.8.3",
+    "vite": "^6.4.1"
+  }
+}
